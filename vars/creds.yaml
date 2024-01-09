@@ -1,0 +1,32 @@
+nested_info:
+  - name: vcf-mgmt-esxi-1
+    staticip: 192.168.3.16
+    fqdn: vcf-mgmt-esxi-1.home.lab
+  - name: vcf-mgmt-esxi-2
+    staticip: 192.168.3.17
+    fqdn: vcf-mgmt-esxi-2.home.lab
+  - name: vcf-mgmt-esxi-3
+    staticip: 192.168.3.18
+    fqdn: vcf-mgmt-esxi-3.home.lab
+  - name: vcf-mgmt-esxi-4
+    staticip: 192.168.3.19
+    fqdn: vcf-mgmt-esxi-4.home.lab
+physical_esxi:
+  esxi_host: esxi1.home.lab
+  esxi_username: root
+  esxi_password: "PASSWORDSETME"
+  datastore_name: Datastore1
+nested_info_global:
+  username: root
+  password: "PASSWORDSETME"
+  dns: 192.168.3.6
+  domain: home.lab
+  gateway: 192.168.3.1
+  staticmask: 255.255.255.0
+  ntpserver: pool.ntp.org
+  networks:
+    - name: "VM Network"
+    - name: "VM Network"
+    - name: "vSanvMotionPG"
+    - name: "vSanvMotionPG"
+  iso_location: "/home/matt/files/VMware-VMvisor-Installer-8.0U2-22380479.x86_64.iso"
