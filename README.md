@@ -41,6 +41,13 @@ nested_info_global: # Global settings for the nested ESXi VMs
 ```
 
 
+/hosts - Set the information for the physical esxi host
+
+```
+esxi1.home.lab ansible_host=esxi1.home.lab ansible_ssh_pass="PASSWORDSETME" # Set the hostname and password
+```
+
+
 ## Usage
 It is recommended that you always use an encrypted vault. The creds.yaml file needs to be encrypted.
 
