@@ -38,6 +38,8 @@ nested_info_global: # Global settings for the nested ESXi VMs
     - name: "vSanvMotionPG" # 1 of 2 required networks for vSAN and vMotion networks
     - name: "vSanvMotionPG" # 2 of 2 required networks for vSAN and vMotion networks
   iso_location: "/home/matt/files/VMware-VMvisor-Installer-8.0U2-22380479.x86_64.iso" # Location on your jumpbox where you are hosting the vSphere ISO file
+  esxi_cpu: 8
+  esxi_mem_mb: 64000
 ```
 
 
