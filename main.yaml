@@ -1,6 +1,6 @@
 ---
 - name: Deploy a nested ESXi environment by installing the ISO via a KS.CFG file
-  hosts: all
+  hosts: localhost
   gather_facts: false
 
   vars_files:
@@ -21,7 +21,6 @@
     - name: Sleep for 5 minutes until VMs come up
       ansible.builtin.wait_for:
         timeout: 300
-      delegate_to: localhost
 
     - name: Cleanup ISOs on the physical esxi
       include_role:
