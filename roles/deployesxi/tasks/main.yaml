@@ -3,19 +3,16 @@
     path: "/tmp/isoextract/KS"
     state: directory
     mode: "755"
-  delegate_to: localhost
 
 - name: Create temp directory for the finished isos
   ansible.builtin.file:
     path: "/tmp/isofinished"
     state: directory
     mode: "755"
-  delegate_to: localhost
 
 - name: Extract ESXi ISO
   ansible.builtin.command: "xorriso -osirrox on -indev {{ nested_info_global.iso_location }} -extract / /tmp/isoextract"
   changed_when: false
-  delegate_to: localhost
 
 - name: Add write permission to extracted files
   ansible.builtin.file:
@@ -23,14 +20,12 @@
     state: directory
     recurse: true
     mode: u+w
-  delegate_to: localhost
 
 - name: Edit BOOT.CFG to inject the KS.CFG file
   ansible.builtin.replace:
     dest: "{{ item }}"
     regexp: 'kernelopt=.*'
     replace: 'kernelopt=runweasel ks=cdrom:/KS/KS.CFG'
-  delegate_to: localhost
   loop:
     - "/tmp/isoextract/BOOT.CFG"
     - "/tmp/isoextract/EFI/BOOT/BOOT.CFG"
@@ -40,14 +35,12 @@
     src: "ks.j2"
     dest: "/tmp/isoextract/KS/KS.CFG"
     mode: "666"
-  delegate_to: localhost
 
 - name: Create custom ESXi ISO for each nested ESXi host
   ansible.builtin.command: "xorrisofs -relaxed-filenames -J -R -o /tmp/isofinished/{{ nested_info.name }}.iso \
                           -b ISOLINUX.BIN -c BOOT.CAT -no-emul-boot -boot-load-size 4 -boot-info-table -eltorito-alt-boot -e EFIBOOT.IMG -no-emul-boot /tmp/isoextract/"
   args:
     chdir: "/tmp/isoextract/"
-  delegate_to: localhost
 
 - name: Upload the ESXi ISO to the datastore
   community.vmware.vsphere_copy:
@@ -59,7 +52,6 @@
     src: "/tmp/isofinished/{{ nested_info.name }}.iso"
     datastore: "{{ physical_esxi_info.datastore_name }}"
     path: "ISOs/{{ nested_info.name }}.iso"
-  delegate_to: localhost
 
 - set_fact:
     networklist: |-
@@ -116,13 +108,11 @@
         type: iso
         iso_path: "[Datastore1] ISOs/{{ nested_info.name }}.iso"
         state: present
-  delegate_to: localhost
 
 - name: Cleanup local files
   ansible.builtin.file:
     path: "{{ item }}"
     state: absent
-  delegate_to: localhost
   loop:
     - "/tmp/isoextract/"
     - "/tmp/isofinished/"
