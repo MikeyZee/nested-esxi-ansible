@@ -99,8 +99,8 @@
         controller_number: 0
     hardware:
       nested_virt: true
-      memory_mb: "75000"
-      num_cpus: "8"
+      memory_mb: "{{ nested_info_global.esxi_mem_mb }}"
+      num_cpus: "{{ nested_info_global.esxi_cpu }}"
     networks: "{{ networklist }}"
     cdrom:
       - controller_number: 0
