@@ -8,4 +8,3 @@
     datastore: "{{ physical_esxi_info.datastore_name }}"
     path: "ISOs/{{ nested_info.name }}.iso"
     state: absent
-  delegate_to: localhost
