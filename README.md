@@ -43,10 +43,9 @@ nested_info_global: # Global settings for the nested ESXi VMs
 ```
 
 
-/hosts - Set the information for the physical esxi host
+/hosts - Not a required file. No need to update.
 
 ```
-esxi1.home.lab ansible_host=esxi1.home.lab ansible_ssh_pass="PASSWORDSETME" # Set the hostname and password
 ```
 
 
