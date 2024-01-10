@@ -1,2 +1,1 @@
-[physical_esxi]
-esxi1.home.lab ansible_host=esxi1.home.lab ansible_ssh_pass="PASSWORDSETME"
+
