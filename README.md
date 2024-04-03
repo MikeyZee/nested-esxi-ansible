@@ -45,9 +45,15 @@ nested_info_global: # Global settings for the nested ESXi VMs
 
 /hosts - Not a required file. No need to update.
 
+/roles/deployesxi/tasks/main.yaml - There's a few variables to set in the creds file for this script to work
+
 ```
+datacenter: ha-datacenter - Modify this to your datacenter name
+path: "ISOs/{{ nested_info.name }}.iso" - This requires a folder called "ISOs" to exist in your root directory of the datacenter. Modify it as needed.
 ```
 
+```
+```
 
 ## Usage
 It is recommended that you always use an encrypted vault. The creds.yaml file needs to be encrypted.
