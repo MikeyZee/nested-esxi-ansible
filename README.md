@@ -49,6 +49,7 @@ nested_info_global: # Global settings for the nested ESXi VMs
 
 ```
 datacenter: ha-datacenter - Modify this to your datacenter name. If no vCenter is deployed managing the physical host, leave this as ha-datacenter
+datacenter: ha-datacenter - Modify this to your datacenter name. If no vCenter is deployed managing the physical host, leave this as ha-datacenter
 path: "ISOs/{{ nested_info.name }}.iso" - This requires a folder called "ISOs" to exist in your root directory of the datacenter. Modify it as needed.
 ```
 
